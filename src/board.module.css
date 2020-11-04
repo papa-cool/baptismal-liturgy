@@ -1,0 +1,26 @@
+
+.title {
+  max-height: calc(100vh/10);
+  max-width: calc(100vw/15);
+  cursor: move;
+  position: absolute;
+  top: calc(25vh*0.9);
+  font-weight: bold;
+}
+
+.image {
+  max-height: calc(100vh/10);
+  max-width: calc(100vw/10);
+  cursor: move;
+  position: absolute;
+  top: calc(50vh*0.9);
+}
+
+.quote {
+  max-height: calc(100vh/10);
+  max-width: calc(100vw/11);
+  cursor: move;
+  position: absolute;
+  top: calc(75vh*0.9);
+  font-weight: lighter;
+}
