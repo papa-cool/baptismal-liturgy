@@ -24,3 +24,21 @@
   top: calc(75vh*0.9);
   font-weight: lighter;
 }
+
+.name {
+  text-align: center;
+  margin: 1em 35% 0;
+  width: 30%;
+}
+
+.name > input {
+  border-width: 0px;
+  background-color: transparent;
+  outline: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+.name > ::placeholder {
+  text-align: center;
+}

@@ -4,8 +4,7 @@ import Board from './board.jsx';
 function App() {
   return (
     <div className="App">
-      <Board>
-      </Board>
+      <Board />
     </div>
   );
 }
