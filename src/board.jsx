@@ -7,7 +7,7 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        <div className={styles.name}><input type="text" placeholder="Votre nom" size="50"></input></div>
+        <Draggable><div className={styles.name}><input type="text" placeholder="Votre nom" size="50"></input></div></Draggable>
         <Draggable><p className={styles.title} style={{ left: 'calc(10vw*0.9)' }}>Vêtement blanc</p></Draggable>
         <Draggable><p className={styles.title} style={{ left: 'calc(20vw*0.9)' }}>Profession de foi</p></Draggable>
         <Draggable><p className={styles.title} style={{ left: 'calc(30vw*0.9)' }}>Eau</p></Draggable>
