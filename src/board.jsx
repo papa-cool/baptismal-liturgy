@@ -4,10 +4,18 @@ import Draggable from 'react-draggable';
 
 class Board extends React.Component {
 
+  nameChanged = (event) => {
+    window.firebase.database().ref('users/'+this.props.userId+'/name').set(event.target.value)
+  }
+
+  onStop = (event, data) => {
+    window.firebase.database().ref('users/'+this.props.userId+'/'+data.node.id).set({x: data.x, y: data.y})
+  }
+
   render() {
     return (
       <div>
-        <Draggable onStop={this.onStop.bind(this)}><div id="name" className={styles.name}><input type="text" placeholder="Votre nom" size="50"></input></div></Draggable>
+        <Draggable onStop={this.onStop.bind(this)}><div id="nameInput" className={styles.name}><input type="text" placeholder="Votre nom" size="50" onChange={this.nameChanged.bind(this)}></input></div></Draggable>
         <Draggable onStop={this.onStop.bind(this)}><p id="whiteClothTitle" className={styles.title} style={{ left: 'calc(10vw*0.9)' }}>Vêtement blanc</p></Draggable>
         <Draggable onStop={this.onStop.bind(this)}><p id="faithTitle" className={styles.title} style={{ left: 'calc(20vw*0.9)' }}>Profession de foi</p></Draggable>
         <Draggable onStop={this.onStop.bind(this)}><p id="waterTitle" className={styles.title} style={{ left: 'calc(30vw*0.9)' }}>Eau</p></Draggable>
