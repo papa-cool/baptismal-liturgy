@@ -1,5 +1,6 @@
 {
   "projects": {
-    "baptimal-liturgy": "baptismal-liturgy"
+    "baptimal-liturgy": "baptismal-liturgy",
+    "default": "baptismal-liturgy"
   }
 }
