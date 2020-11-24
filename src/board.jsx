@@ -9,7 +9,17 @@ class Board extends React.Component {
   }
 
   onStop = (event, data) => {
-    window.firebase.database().ref('users/'+this.props.userId+'/'+data.node.id).set({x: data.x, y: data.y})
+    // New position = Initial position + delta = Initial position + ratioDelta * Initial position
+    // document.getElementById(id).style.transform=("translate(
+    //   document.getElementById(id).offsetTop * ratioDeltaX),
+    //   document.getElementById(id).offsetLeft * ratioDeltaY),
+    // )")
+    // Switch the 2 following lines after the testing admin page
+    // window.firebase.database().ref('users/'+this.props.userId+'/'+data.node.id).set({
+    window.firebase.database().ref('users/'+data.node.id).set({
+      ratioDeltaX: data.x/data.node.offsetLeft,
+      ratioDeltaY: data.y/data.node.offsetTop
+    })
   }
 
   render() {
