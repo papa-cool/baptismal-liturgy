@@ -1,17 +1,19 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Board from './board.jsx';
 import { v4 as uuidv4 } from 'uuid';
-
-var userId = uuidv4();
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
+          <Route path='/admin/:id' component={() => <Board admin={ true } />} />
           <Route path='/admin' component={() => <Board admin={ true } />} />
-          <Route component={() => <Board userId={ userId } />} />
+          <Route path='/user/:id' component={() => <Board admin={ false } />} />
+          <Route>
+            <Redirect to={{ pathname: "/user/" + uuidv4() }}/>
+          </Route>
         </Switch>
       </div>
     </Router>
