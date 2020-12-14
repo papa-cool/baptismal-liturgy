@@ -24,6 +24,7 @@ class Board extends React.Component {
 
     this.state = {
       id: this.props.match.params.id,
+      name: "",
       users: {},
       data: this.defaultPosition
     }
@@ -36,15 +37,19 @@ class Board extends React.Component {
     window.firebase.database().ref('data/'+this.state.id).once('value', (snapshot) => {
       this.setState({ data: {...this.defaultPosition, ...snapshot.val()} })
     })
-    window.firebase.database().ref('users/').once('value', (snapshot) => {
-      this.setState({ users: {...users, ...snapshot.val()} })
-    })
     if (this.props.admin) {
+      window.firebase.database().ref('users/').once('value', (snapshot) => {
+        this.setState({ users: {...users, ...snapshot.val()} })
+      })
       window.firebase.database().ref('data/'+this.state.id).on('value', (snapshot) => {
         this.setState({ data: {...this.defaultPosition, ...snapshot.val()} })
       })
       window.firebase.database().ref('users/').on('value', (snapshot) => {
         this.setState({ users: snapshot.val() || {} })
+      })
+    } else {
+      window.firebase.database().ref('users/'+this.state.id).once('value', (snapshot) => {
+        this.setState({ name: snapshot.val() || "" })
       })
     }
   }
@@ -108,6 +113,7 @@ class Board extends React.Component {
 
   nameChanged = (event) => {
     window.firebase.database().ref('users/'+this.state.id).set(event.target.value)
+    this.setState({name: event.target.value})
   }
 
   onStop = (event, data) => {
@@ -147,7 +153,7 @@ class Board extends React.Component {
       nameInput =
         <Draggable>
           <div id="nameInput" className={styles.name}>
-            <input type="text" placeholder="Votre nom" size="50" onChange={this.nameChanged.bind(this)} />
+            <input type="text" placeholder="Votre nom" size="50" value={this.state.name} onChange={this.nameChanged.bind(this)} />
           </div>
         </Draggable>
     }
