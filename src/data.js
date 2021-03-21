@@ -12,16 +12,16 @@ const DATA = {
     { id: "candleTitle", left: "90vw*0.9", top: "25vh*0.9", text: "Cierge allumé" }
   ],
   image: [
-    { src: "/image1.jpg", id: "signationImage", left: "9vw*0.9", top: "50vh*0.9" },
-    { src: "/image2.jpg", id: "candleImage", left: "18vw*0.9", top: "50vh*0.9" },
-    { src: "/image3.jpg", id: "faithImage", left: "27vw*0.9", top: "50vh*0.9" },
-    { src: "/image4.jpg", id: "litanieOfTheSaintsImage", left: "36vw*0.9", top: "50vh*0.9" },
-    { src: "/image5.jpg", id: "whiteClothImage", left: "45vw*0.9", top: "50vh*0.9" },
-    { src: "/image6.jpg", id: "anointingWithChrism1Image", left: "54vw*0.9", top: "50vh*0.9" },
-    { src: "/image7.jpg", id: "waterImage", left: "63vw*0.9", top: "50vh*0.9" },
-    { src: "/image8.jpg", id: "anointingWithChrismImage", left: "72vw*0.9", top: "50vh*0.9" },
-    { src: "/image9.jpg", id: "ourFatherImage", left: "81vw*0.9", top: "50vh*0.9" },
-    { src: "/image0.jpg", id: "wordOfGodImage", left: "90vw*0.9", top: "50vh*0.9" }
+    { src: "/image1.png", id: "signationImage", left: "9vw*0.9", top: "50vh*0.9" },
+    { src: "/image2.png", id: "candleImage", left: "18vw*0.9", top: "50vh*0.9" },
+    { src: "/image3.png", id: "faithImage", left: "27vw*0.9", top: "50vh*0.9" },
+    { src: "/image4.png", id: "litanieOfTheSaintsImage", left: "36vw*0.9", top: "50vh*0.9" },
+    { src: "/image5.png", id: "whiteClothImage", left: "45vw*0.9", top: "50vh*0.9" },
+    { src: "/image6.png", id: "anointingWithChrism1Image", left: "54vw*0.9", top: "50vh*0.9" },
+    { src: "/image7.png", id: "waterImage", left: "63vw*0.9", top: "50vh*0.9" },
+    { src: "/image8.png", id: "anointingWithChrismImage", left: "72vw*0.9", top: "50vh*0.9" },
+    { src: "/image9.png", id: "ourFatherImage", left: "81vw*0.9", top: "50vh*0.9" },
+    { src: "/image0.png", id: "wordOfGodImage", left: "90vw*0.9", top: "50vh*0.9" }
   ],
   quote: [
     { id: "whiteClothQuote", left: "10vw*0.9", top: "75vh*0.9", text: "«Vous êtes une création nouvelle dans le Christ, vous avez revêtu le Christ»" },

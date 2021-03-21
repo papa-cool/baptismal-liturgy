@@ -160,16 +160,7 @@ class Board extends React.Component {
     return (
       <div>
         { nameInput }
-        {
-          DATA['title'].map((attr) => {
-            return (
-              <Draggable positionOffset={{ x: `calc(${attr.left}*${this.state.data[attr.id].ratioDeltaX})`, y: `calc(${attr.top}*${this.state.data[attr.id].ratioDeltaY})` }} {...dragHandlers}>
-                <p id={ attr.id } className={styles.title} style={{ left: `calc(${attr.left})` }}>{ attr.text }</p>
-              </Draggable>
-            )
-          })
-        }
-        {
+        {// Display image first in order to get them behind title and quote when there are superimposed.
           DATA['image'].map((attr) => {
             return (
               <Draggable positionOffset={{ x: `calc(${attr.left}*${this.state.data[attr.id].ratioDeltaX})`, y: `calc(${attr.top}*${this.state.data[attr.id].ratioDeltaY})` }} {...dragHandlers}>
@@ -178,11 +169,20 @@ class Board extends React.Component {
             )
           })
         }
-        {
+        {// Display quote before title in order to have titles easily selectable when both are superimposed.
           DATA['quote'].map((attr) => {
             return (
               <Draggable positionOffset={{ x: `calc(${attr.left}*${this.state.data[attr.id].ratioDeltaX})`, y: `calc(${attr.top}*${this.state.data[attr.id].ratioDeltaY})` }} {...dragHandlers}>
                 <p id={ attr.id } className={styles.quote} style={{ left: `calc(${attr.left})` }}>{ `${attr.text}` }</p>
+              </Draggable>
+            )
+          })
+        }
+        {
+          DATA['title'].map((attr) => {
+            return (
+              <Draggable positionOffset={{ x: `calc(${attr.left}*${this.state.data[attr.id].ratioDeltaX})`, y: `calc(${attr.top}*${this.state.data[attr.id].ratioDeltaY})` }} {...dragHandlers}>
+                <p id={ attr.id } className={styles.title} style={{ left: `calc(${attr.left})` }}>{ attr.text }</p>
               </Draggable>
             )
           })

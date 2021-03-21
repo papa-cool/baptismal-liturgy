@@ -13,7 +13,7 @@ These elements should be dragged and dropped on the board to be displayed in the
 All positions changes are synchronized for all users and available from the admin board.
 The admin can select the user of its choice and see its board in realtime.
 
-User board as admin board are responsive. Movements on the user board will reflected on the admin board in proportion to the size of its window.
+User board and admin board are responsive. Movements on the user board will be reflected on the admin board in proportion to the size of its window.
 
 ![Admin Board Screenshot](readme/admin.png)
 
