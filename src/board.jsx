@@ -3,6 +3,7 @@ import styles from './board.module.css';
 import Draggable from 'react-draggable';
 import DATA from './data.js';
 import { withRouter } from "react-router";
+import Select from 'react-select';
 
 // I'm not fully satisfied by the Draggable lib. Drag and drop triggers transform with pixel which
 // is not responsive. In case of window resize, object can move outside the window.
@@ -26,6 +27,7 @@ class Board extends React.Component {
       id: this.props.match.params.id,
       name: "",
       users: {},
+      selectedUsers: [],
       data: this.defaultPosition
     }
   }
@@ -106,9 +108,31 @@ class Board extends React.Component {
     candleQuote: {ratioDeltaX: 0, ratioDeltaY: 0}
   }
 
-  changeUser = (event) => {
-    this.props.history.push(`/admin/${event.target.value}`);
-    this.setState({ id: event.target.value })
+  // filtering should be this.state.selectedUsers or empty array
+  optionsForUserSelect(filtering) {
+    let options = Object.entries(this.state.users).map(([id, name]) => {
+      return { value: id, selected: id === this.state.id, label: name || id }
+    })
+    if(filtering.length === 0) {
+      return options
+    } else {
+      return options.filter(user => filtering.includes(user.value))
+    }
+  }
+
+  changeUserFiltering = (inputValue, { action }) => {
+    this.setState({selectedUsers: (inputValue || []).map((item) => item.value)})
+  }
+
+  changeUser = (newValue, { action }) => {
+    switch (action) {
+      case 'select-option':
+        this.props.history.push(`/admin/${newValue.value}`);
+        this.setState({ id: newValue.value })
+        return;
+      default:
+        return;
+    }
   }
 
   nameChanged = (event) => {
@@ -134,21 +158,14 @@ class Board extends React.Component {
 
   render() {
     const dragHandlers = {disabled: this.props.admin, onStop: this.onStop};
-    let defaultOption
-    if (!this.state.id) {
-      defaultOption = <option disabled value="" selected="true">Select one user</option>
-    }
     let nameInput
+
     if(this.props.admin) {
       nameInput =
-        <select name="users" id="userSelect" onChange={this.changeUser.bind(this)}>
-          { defaultOption || "" }
-          {
-            Object.entries(this.state.users).map(([id, name]) => {
-              return (<option value={ id } selected={ id === this.state.id }>{name || id}</option>)
-            })
-          }
-        </select>
+        <div>
+          <Select options={this.optionsForUserSelect([])} isMulti onChange={this.changeUserFiltering} />
+          <Select options={this.optionsForUserSelect(this.state.selectedUsers)} defaultValue={this.state.id} onChange={this.changeUser}/>
+        </div>
     } else {
       nameInput =
         <Draggable>
@@ -157,6 +174,7 @@ class Board extends React.Component {
           </div>
         </Draggable>
     }
+
     return (
       <div>
         { nameInput }
