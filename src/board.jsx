@@ -163,8 +163,8 @@ class Board extends React.Component {
     if(this.props.admin) {
       nameInput =
         <div>
-          <Select options={this.optionsForUserSelect([])} isMulti onChange={this.changeUserFiltering} />
-          <Select options={this.optionsForUserSelect(this.state.selectedUsers)} defaultValue={this.state.id} onChange={this.changeUser}/>
+          <Select options={this.optionsForUserSelect([])} isMulti placeholder={'Select users of your group'} onChange={this.changeUserFiltering} />
+          <Select options={this.optionsForUserSelect(this.state.selectedUsers)} defaultValue={this.state.id} placeholder={'Select user to display'} onChange={this.changeUser}/>
         </div>
     } else {
       nameInput =
